@@ -1,8 +1,6 @@
 # EthereumTree
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ethereum_tree`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A ruby library to generate ETH addresses from a Hierarchical Deterministic wallet according to the BIP32 standard.
 
 ## Installation
 
@@ -22,7 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+  master_node = EthereumTree::Node.from_bip32('tprv8ZgxMBicQKsPd66VHk9cQagZEkrgFgNzR3jcjKpCBLW87wWnz9dNxHnx41tUZoKygnoBsr4LJNof4TJxdiRpn6bH11B1vDxKJDFr31NL49d')
+  child_node  = master_node.node_for_path("m/0/0'/1")
+  prv_key     = child_node.private_key # f627053ef9ff983c1eccedb58912a2d3fc9fbfaccc52e4ebe15f96b90bf2cb09
+  addr        = child_node.to_address  # 0xe971e29e925d00c38396a12774f4bc3c46978076
+```
 
 ## Development
 
