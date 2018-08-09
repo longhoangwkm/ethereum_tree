@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['longhoang.wkm']
   spec.email         = ['longhoang@wakumo.vn']
 
-  spec.summary       = 'Write a short summary, because RubyGems requires one.'
-  spec.description   = 'Write a longer description or delete this line.'
-  spec.homepage      = "https://github.com/longhoangwkm."
+  spec.summary       = 'BIP32 Hierarchical Deterministic Ethereum wallet'
+  spec.description   = 'A ruby library to generate ETH addresses from a Hierarchical Deterministic wallet according to the BIP32 standard.'
+  spec.homepage      = "https://github.com/longhoangwkm/ethereum_tree"
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
