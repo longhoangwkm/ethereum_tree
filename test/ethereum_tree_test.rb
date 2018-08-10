@@ -8,21 +8,24 @@ class EthereumTreeTest < Minitest::Test
   # - Then using https://iancoleman.io/bip39/ to Derived Addresses to calculate address, publickey, privatekey
   # - Using that results to build data test
   #
+
+  def setup
+    xprv = 'xprv9s21ZrQH143K3xgnwszedmWFvYzFNeZE8rbLBeJXGUhR4YjjaiBJ8UACTSf2Vopp46kpE2xWyfA5Lp3Y9GS4FJxNJhimwkAxQjqyaU6t156'
+    @master_node = EthereumTree::Node.from_bip32(xprv)
+  end
+
   def test_create_wallet_from_xprv
-    xprv        = 'xprv9s21ZrQH143K3xgnwszedmWFvYzFNeZE8rbLBeJXGUhR4YjjaiBJ8UACTSf2Vopp46kpE2xWyfA5Lp3Y9GS4FJxNJhimwkAxQjqyaU6t156'
-    master_node = EthereumTree::Node.from_bip32(xprv)
+    node1    = @master_node.node_for_path('m/0/0')
+    address1 = node1.to_address
+    prv_key1 = node1.private_key
 
-    node1       = master_node.node_for_path('m/0/0')
-    address1    = node1.to_address
-    prv_key1    = node1.private_key
+    node2    = @master_node.node_for_path('m/0/5')
+    address2 = node2.to_address
+    prv_key2 = node2.private_key
 
-    node2       = master_node.node_for_path('m/0/5')
-    address2    = node2.to_address
-    prv_key2    = node2.private_key
-
-    node3       = master_node.node_for_path('m/0/19')
-    address3    = node3.to_address
-    prv_key3    = node3.private_key
+    node3    = @master_node.node_for_path('m/0/19')
+    address3 = node3.to_address
+    prv_key3 = node3.private_key
 
     assert_equal address1, '0x524e9ff149eff200dd083a486d8f6b95feb6898d'
     assert_equal prv_key1, '3df0cbebb05a64ec5d69967314037dc8fd0711a0102a2776a3ec01e19d185dda'
@@ -33,4 +36,16 @@ class EthereumTreeTest < Minitest::Test
     assert_equal address3, '0x80d2b21985212eadfdd8553c271cb9cdd3cd5366'
     assert_equal prv_key3, '3248f56382be7d3829f2fe374111645d9b8734aa95c6be62444d6515d211cd62'
   end
+
+  def test_derive_wallet_from_child_node
+    addr1 = @master_node.node_for_path("m/0/0'/1/0/0").to_address
+    prv_key1 = @master_node.node_for_path("m/0/0'/1/0/0").private_key
+
+    addr2 = @master_node.node_for_path("m/0/0'/1").node_for_path("m/0/0").to_address
+    prv_key2 = @master_node.node_for_path("m/0/0'/1").node_for_path("m/0/0").private_key
+
+    assert_equal addr1, addr2
+    assert_equal prv_key1, prv_key2
+  end
 end
+
