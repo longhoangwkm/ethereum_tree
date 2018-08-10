@@ -31,5 +31,13 @@ module EthereumTree
     def node_for_path(path)
       Node.new(@wallet_node.node_for_path(path))
     end
+
+    def xpub
+      @wallet_node.to_bip32
+    end
+
+    def xprv
+      @wallet_node.to_bip32(:private)
+    end
   end
 end
