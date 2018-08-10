@@ -7,7 +7,5 @@ require 'ecdsa'
 require 'digest/sha3'
 require 'rlp'
 
-require 'pry'
-
 module EthereumTree
 end
