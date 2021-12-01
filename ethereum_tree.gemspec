@@ -21,13 +21,13 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency 'bundler', '~> 1.16'
-  spec.add_development_dependency 'rake', '>= 12.3.3'
-  spec.add_development_dependency 'minitest', '~> 5.0'
-  spec.add_development_dependency 'pry-rails'
+  spec.add_development_dependency 'bundler', '~> 2.2'
+  spec.add_development_dependency 'rake', '~> 13.0'
+  spec.add_development_dependency 'minitest', '~> 5.14'
+  spec.add_development_dependency 'pry-rails', '~> 0.3'
 
-  spec.add_dependency 'ecdsa', '~> 1.2.0'
-  spec.add_dependency 'digest-sha3', '~> 1.1.0'
-  spec.add_dependency 'rlp', '~> 0.7.3'
-  spec.add_dependency 'money-tree'
+  spec.add_dependency 'ecdsa', '~> 1.2'
+  spec.add_dependency 'keccak', '~> 1.3'
+  spec.add_dependency 'rlp', '~> 0.7'
+  spec.add_dependency 'money-tree', '~> 0.10'
 end
