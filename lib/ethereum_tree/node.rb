@@ -19,7 +19,7 @@ module EthereumTree
 
       # From ethereum public key to ethereum address
       bytes = RLP::Utils.decode_hex(ethereum_public)
-      address_bytes = Digest::SHA3.new(256).digest(bytes)[-20..-1]
+      address_bytes = Digest::Keccak.new(256).digest(bytes)[-20..-1]
       address = RLP::Utils.encode_hex(address_bytes)
       EthereumTree::Utils.prefix_hex(address)
     end
