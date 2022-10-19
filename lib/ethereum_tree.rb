@@ -4,7 +4,7 @@ require 'ethereum_tree/utils'
 
 require 'money-tree'
 require 'ecdsa'
-require 'digest/sha3'
+require 'digest/keccak'
 require 'rlp'
 
 module EthereumTree
