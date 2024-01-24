@@ -29,5 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'ecdsa', '~> 1.2'
   spec.add_dependency 'keccak', '~> 1.3'
   spec.add_dependency 'rlp', '~> 0.7'
-  spec.add_dependency 'money-tree', '~> 0.10'
+  spec.add_dependency 'money-tree', '~> 0.11.2'
 end
